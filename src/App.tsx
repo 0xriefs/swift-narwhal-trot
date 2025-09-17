@@ -24,6 +24,8 @@ import ProfilKeahlian from './pages/ProfilKeahlian';
 import StrukturOrganisasi from './pages/StrukturOrganisasi';
 import VisiMisi from './pages/VisiMisi';
 import LMSCourse from './pages/LMSCourse';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -53,6 +55,8 @@ function App() {
             <Route path="/struktur-organisasi" element={<StrukturOrganisasi />} />
             <Route path="/visi-misi" element={<VisiMisi />} />
             <Route path="/lms-course" element={<LMSCourse />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
         <Footer />
