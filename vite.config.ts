@@ -1,17 +1,21 @@
-import { defineConfig } from "vite";
-import dyadComponentTagger from "@dyad-sh/react-vite-component-tagger";
-import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { cloudflare } from "@cloudflare/vite-plugin";
+import { mochaPlugins } from "@getmocha/vite-plugins";
 
-export default defineConfig(() => ({
+export default defineConfig({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  plugins: [...mochaPlugins(process.env as any), react(), cloudflare()],
   server: {
-    host: "::",
-    port: 8080,
+    allowedHosts: true,
   },
-  plugins: [dyadComponentTagger(), react()],
+  build: {
+    chunkSizeWarningLimit: 5000,
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-}));
+});
